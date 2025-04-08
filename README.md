@@ -15,7 +15,7 @@ La incialización del proyecto se realiza a través del index.py:
 > python index.py
 
 Su estructura básica es:
-
+<pre> ```
 /proyecto
     LICENSE
     README.md
@@ -40,11 +40,12 @@ Su estructura básica es:
         /frontend
     /utils
         /packages
+``` </pre>
 
 ### Archivo .env
 
 Para las variables de entorno, se utiliza el archivo .env con las siguientes definiciones:
-
+<pre> ```
 DATABASE_TYPE=mysql
 APPLICATION_NAME=
 ADMIN_MAIL=
@@ -61,6 +62,7 @@ MAIL_USERNAME=
 MAIL_PASSWORD=
 SECRET_KEY=
 UPLOAD_FOLDER=uploads
+``` </pre>
 
 ## Licencia
 
