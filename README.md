@@ -41,6 +41,27 @@ Su estructura básica es:
     /utils
         /packages
 
+### Archivo .env
+
+Para las variables de entorno, se utiliza el archivo .env con las siguientes definiciones:
+
+DATABASE_TYPE=mysql
+APPLICATION_NAME=
+ADMIN_MAIL=
+MYSQL_USER=
+MYSQL_PASSWORD=
+MYSQL_HOST=
+MYSQL_PORT=
+MYSQL_DB=
+MAIL_PORT=
+MAIL_USE_TLS=
+MAIL_USE_SSL=
+MAIL_SERVER=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+SECRET_KEY=
+UPLOAD_FOLDER=uploads
+
 ## Licencia
 
 Este proyecto está licenciado bajo los términos de la licencia MIT. Consultá el archivo [LICENSE](./LICENSE) para más información.
