@@ -11,7 +11,7 @@
     {% if current_user.is_authenticated %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('frontend.index') }}"><img src="{{ url_for('static', filename='opol1.webp') }}" style="height: 50px; margin-right: 20px;"></a>
+        <a class="navbar-brand" href="{{ url_for('frontend.index') }}"><img src="{{ url_for('static', filename='ngo.png') }}" style="height: 50px; margin-right: 20px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,25 +32,7 @@
               </ul>
             </li>            
             {% endif %}
-            {% if current_user.usergroup.id == 2%}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('routing.report', record_id=4) }}" id="">
-                  Ver Reporte
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('routing.pln_day') }}" id="">
-                  Ir a Formulario de Encuesta
-              </a>
-            </li>
-            {% endif %}
-            {% if current_user.usergroup.id == 3%}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('routing.pln_day') }}" id="">
-                  Ir a Formulario de Encuesta
-              </a>
-            </li>
-            {% endif %}
+            
             {% if class_names and current_user.usergroup.id == 1%}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

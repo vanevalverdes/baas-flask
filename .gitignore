@@ -1,6 +1,3 @@
-#/utils/exporter.py
-#/static/uploads
-#/static/qrcodes
 
 # Excluye el entorno virtual
 /venv
@@ -38,5 +35,5 @@ env.bak/
 venv.bak/
 
 # Excluye Migrations
-#migrations/
-#/migrations
+migrations/
+/migrations
