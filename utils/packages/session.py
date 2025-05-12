@@ -225,7 +225,17 @@ class Query:
         # Filtrar por el campo utilizando la función del operador
         self.query = self.query.filter(op_func(getattr(self.model_class, fieldname), value))
         return self
-       
+
+    def addFilterIsNull(self, fieldname):
+        # Aplica filtro IS NULL al campo especificado
+        self.query = self.query.filter(getattr(self.model_class, fieldname) == None)
+        return self
+    
+    def addFilterIsNotNull(self, fieldname):
+        # Aplica filtro IS NOT NULL al campo especificado
+        self.query = self.query.filter(getattr(self.model_class, fieldname) != None)
+        return self
+    
     def getSum(self, fieldname):
         from sqlalchemy import func
         # Obtener la suma del campo especificado
