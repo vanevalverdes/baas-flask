@@ -96,7 +96,7 @@ def generate_model_class(fields, class_name, file_name, directory, plural):
             record = application.getClazzDetails(field['connected_table'])
             classname = record.getName()
             fieldname = f"{field['name']}"
-            class_definition += f"    {fieldname} = db.Column(db.Integer, db.ForeignKey('{classname.lower()}.id', ondelete='CASCADE'), nullable=True)\n"
+            class_definition += f"    {fieldname}_id = db.Column(db.Integer, db.ForeignKey('{classname.lower()}.id', ondelete='CASCADE'), nullable=True)\n"
             class_definition += f"    {classname.lower()} = db.relationship('{classname.capitalize()}', backref=backref('{plural}',cascade='all, delete-orphan',passive_deletes=True))\n"
         elif field['type'] != 'modificationDate' and field['type'] != 'creationDate' and field['type'] != 'modifiedby' and field['type'] !='createdby':
             python_type = 'String' if field['type'] == 'String' else 'Integer' if field['type'] == 'Integer' else 'Time' if field['type'] == 'Time' else 'Date' if field['type'] == 'Date' else 'DateTime' if field['type'] == 'DateTime' else 'Integer' if field['type'] == 'Money' else 'Text' if field['type'] == 'Text' else 'Boolean'
