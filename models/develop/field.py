@@ -1,4 +1,5 @@
 from utils.db import db
+from sqlalchemy.orm import backref
 
 class Field(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,16 +16,38 @@ class Field(db.Model):
     default_value = db.Column(db.Text)
     select_options = db.Column(db.Text)
     extraclass = db.Column(db.String(255))
-    container_id = db.Column(db.Integer, db.ForeignKey('container.id'))
-    container = db.relationship('Container', order_by="Field.sort.asc()", backref='fields')
-    clazz_id = db.Column(db.Integer, db.ForeignKey('clazz.id'))
-    clazz = db.relationship('Clazz', order_by="Field.sort.asc()", backref='fields')
+    container_id = db.Column(
+        db.Integer,
+        db.ForeignKey('container.id', ondelete='CASCADE')
+    )
+    container = db.relationship(
+        'Container',
+        backref=backref(
+            'fields',
+            cascade='all, delete-orphan',
+            passive_deletes=True
+        ),
+        order_by="Field.sort.asc()"
+    )
+    clazz_id = db.Column(
+        db.Integer,
+        db.ForeignKey('clazz.id', ondelete='CASCADE')
+    )
+    clazz = db.relationship(
+        'Clazz',
+        backref=backref(
+            'fields',
+            cascade='all, delete-orphan',
+            passive_deletes=True
+        ),
+        order_by="Field.sort.asc()"
+    )
 
     def __repr__(self) -> str:
         return f"{self.name}"
 
 def get_fields(parent=False):
-    from utils.methods import application
+    from utils.packages import application
     clazzes = application.list_class_names()
     options = [{"label": "Ninguna", "value": ""}] + [{"label": name, "value": id} for id, name in clazzes]
     if parent:
